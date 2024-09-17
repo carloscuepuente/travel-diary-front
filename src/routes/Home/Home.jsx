@@ -11,7 +11,6 @@ export default function Home() {
   return (
     <div>
       <h1>Soy pagina de entries</h1>
-      <Link to="/register">Registrarse</Link>
       {entries?.data.map((entry) => {
         return <UserEntries key={entry.id} entry={entry} />;
       })}
