@@ -17,6 +17,7 @@ function Layout() {
         <Link to="/">
           <p>Portada</p>
         </Link>
+        <Link to="/newentry">Comparte tus experiencias!</Link>
         <h1>Travel Diary</h1>
         {user ? (
           <>

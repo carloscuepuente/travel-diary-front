@@ -3,35 +3,30 @@ import { Navigate } from "react-router-dom";
 import { useUser } from "../../UserContext";
 
 export default function Login() {
-  const [user, setUser] = useUser()  
+  const [user, setUser] = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null)
-    const res = await fetch(
-      "https://travel-diary-api.anxoso.com/users/login",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    setError(null);
+    const res = await fetch("https://travel-diary-api.anxoso.com/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
     const json = await res.json();
     if (res.ok) {
-        setUser(json)
+      setUser(json.token);
       //setEmail(json);
       //setPassword("");
     } else {
       setError(json.error);
     }
   };
-  if(user){
-    return(
-        <Navigate to='/'/>
-    )
+  if (user) {
+    return <Navigate to="/" />;
   }
   return (
     <div>
@@ -63,5 +58,3 @@ export default function Login() {
     </div>
   );
 }
-
- 
