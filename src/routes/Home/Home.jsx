@@ -1,18 +1,18 @@
 // import React from 'react'
 import { useEntries } from "../../hooks/api";
-import UserEntries from "./UserEntries";
+import EntryCard from "./entryCard";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   const entries = useEntries();
 
-  console.log(entries);
+  // console.log(entries);
 
   return (
     <div>
-      <h1>Soy pagina de entries</h1>
+      <h2>Lista de entradas</h2>
       {entries?.data.map((entry) => {
-        return <UserEntries key={entry.id} entry={entry} />;
+        return <EntryCard key={entry.id} entry={entry} />;
       })}
     </div>
   );

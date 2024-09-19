@@ -5,13 +5,12 @@ import "./NewPost.css";
 import { useNavigate } from "react-router-dom";
 
 export default function NewPost() {
-  const [user, setUser] = useUser();
+  const [user] = useUser();
   const [title, setTitle] = useState("");
   const [place, setPlace] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
-  const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
 
   const handleFile = (e) => {
@@ -35,7 +34,6 @@ export default function NewPost() {
       body: fd,
     });
     const json = await res.json();
-    setSuccess(json);
     navigate("/");
   };
 
